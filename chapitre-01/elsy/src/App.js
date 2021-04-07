@@ -1,5 +1,7 @@
 import React from "react";
 import './App.css';
+import'./components/Steps';
+import Home from "./components/Steps";
 const tempMin=-20
 const tempMax =40 
 const heartMin =80
@@ -12,6 +14,7 @@ class App extends React.Component {
     return (
       <div class="container-fluid">
       <div class="row">
+        <Home/>
         <p>Heart : {heartMin}</p>
         <p>Temperature :{tempMin}</p>
         <p>Steps :{stepsMin}</p>
