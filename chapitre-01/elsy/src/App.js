@@ -2,6 +2,7 @@ import React from "react";
 import './App.css';
 import'./components/Steps';
 import Home from "./components/Steps";
+import './styles/global.css'
 const tempMin=-20
 const tempMax =40 
 const heartMin =80
