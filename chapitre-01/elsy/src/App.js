@@ -1,16 +1,24 @@
 import React from "react";
 import './App.css';
-var tempMin=-20
-var tempMax =40 
-var heatMin =80
-var heartMax =180
-var stepsMin =0
-var stepsMAx =5000
+const tempMin=-20
+const tempMax =40 
+const heartMin =80
+const heartMax =180
+const stepsMin =0
+const stepsMAx =5000
 
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div class="container-fluid">
+      <div class="row">
+        <p>Heart : {heartMin}</p>
+        <p>Temperature :{tempMin}</p>
+        <p>Steps :{stepsMin}</p>
+        
+
+
+      </div>
         
       </div>
     );
