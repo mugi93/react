@@ -16,17 +16,15 @@ class App extends React.Component {
     return (
       <div class="container-fluid">
         <div class="row">
-          <Home>
-            {this.props.icon = "local_drinks"}
-            {this.props.color = "#3A85FF"}
-            {this.props.value = 1.5}
-            {this.props.unit = "L"}
-            </Home>       {/* water */}
+          <Home icon="local_drink" color="#3A8FF" value={1.5} unit="L"/>{/* water */}
             
+          <Home icon="directions_walk" color="black" value={3000} unit="steps"/>    {/*Steps  */}
             
-            <Home></Home>        {/*Steps  */}
-            <Home></Home>        {/*heart  */}
-            <Home></Home>          {/* temperature */}
+          <Home icon="favorite" color="red" value={120} unit="bpm"/>  {/*heart  */}
+          <Home icon="wb_sunny" color="yellow" value={-10} unit="°C"/> {/* temperature */}
+          
+          
+            
             <p>Heart : {heartMin}</p>
             <p>Temperature :{tempMin}</p>
             <p>Steps :{stepsMin}</p>
