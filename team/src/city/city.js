@@ -4,7 +4,9 @@ class City extends React.Component{
     render(){
         return(
             <div>
-                <h2>Team is:{this.props.list}</h2>
+                <h2 style={{color:this.props.color,backgroundColor:"black"}}>Team is: {this.props.nameTeam} and it is colors: {this.props.color}</h2>
+                
+                
             
 
 
