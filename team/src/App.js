@@ -15,7 +15,7 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      amount:listTeam.point
+      points:[5,15,20,10]
     }
   }
 
@@ -23,15 +23,26 @@ class App extends React.Component{
 
 
   render(){
+    console.log(this.state.points)
     return (
       <div>
         <h1 style={{color:"red"}}>Liste d'equipe:</h1>
-        {listTeam.map((elem)=>{console.log(elem)
-          return (<City color={elem.colors} nameTeam={elem.name} match={elem.number} amount={elem.point}/>)
+        
+        {listTeam.map((elem)=>{console.log(elem.point)
+          return (<City color={elem.colors} 
+            nameTeam={elem.name} 
+            match={elem.number} 
+            amount={elem.point} 
+            add={()=>this.setState({points:elem.point+1})} />)
         })}
-       <button onClick={}>
+        
+         
+        
+        {/* <City add={()=>this.setState({points:listTeam.point+1})}/> */}
+       {/* <button onClick={this.setState.amount=
+      listTeam.point++}> */}
 
-       </button>
+       {/* </button> */}
       </div>
 
     );
