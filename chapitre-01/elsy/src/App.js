@@ -47,19 +47,32 @@ class App extends React.Component {
 
   }
   calculateWater(){
-
-   if(this.state.temperature>20){
+    if(this.state.water>=1,5){
+      if(this.state.temperature>20 ){
+      const temps=this.state.temperature-20;
+     
+      const t= temps*0.02
+      
+      this.setState({
+       water:this.state.water+t
+     });
+   }
+   
+   
+   else if(this.state.heart >120 ){
+     const h=this.state.heart-120;
      this.setState({
-       water:this.state.water+0.02
-     })
-   }else if(this.state.heart >120){
+       water:this.state.water+(h*0.0008)
+     });
+    }
+    else if(this.state.steps>10000 ){
+      const step=this.state.steps-10000
      this.setState({
-       water:this.state.water+0.0008
-     })
-    }else if(this.state.steps>10000){
-     this.setState({
-       water:this.state.water+0.00002
+       water:this.state.water+(step*0.00002)
      })}
+    }
+
+   
   //  else if (this.state.temperature<20){
   //   this.setState({
   //     water:this.state.water-0.02
