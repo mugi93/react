@@ -9,7 +9,7 @@ const tempMax = 40
 const heartMin = 80
 const heartMax = 180
 const stepsMin = 0
-const stepsMax = 5000
+const stepsMax = 50000
 
 class App extends React.Component {
   constructor(props) {
@@ -28,36 +28,55 @@ class App extends React.Component {
   onHeartChange(e){
     this.setState({
       heart:e.target.value,
-      })
+    });
+    this.calculateWater()
 
   }
   onStepsChange(e){
     this.setState({
       steps:e.target.value,
-      })
+    })
+    this.calculateWater()
 
   }
   onTempChange(e){
     this.setState({
       temperature:e.target.value,
-      })
+    })
+    this.calculateWater()
 
   }
   calculateWater(){
-    
+
    if(this.state.temperature>20){
      this.setState({
        water:this.state.water+0.02
      })
-   }else if(this.state.heart>120){
+   }else if(this.state.heart >120){
      this.setState({
        water:this.state.water+0.0008
      })
-   }else if(this.state.steps>10000){
+    }else if(this.state.steps>10000){
      this.setState({
        water:this.state.water+0.00002
-     })
-   }
+     })}
+  //  else if (this.state.temperature<20){
+  //   this.setState({
+  //     water:this.state.water-0.02
+  //   })
+   
+  //  }else if(this.state.heart <120){
+  //   this.setState({
+  //     water:this.state.water-0.0008
+  //   })
+  // 
+  
+   
+  //  }else if(this.state.steps<10000){
+  //   this.setState({
+  //     water:this.state.water-0.00002
+  //   })
+  // }
 
   }
 
@@ -66,7 +85,7 @@ class App extends React.Component {
       <div class="container-fluid">
         <div class="row">
           {/* water */}
-          <Home icon="local_drink" color="#3A85FF" value={this.calculateWater} unit="L"  />
+          <Home icon="local_drink" color="#3A85FF" value={this.state.water} unit="L"  />
            {/*Steps  */}
           <Home icon="directions_walk" color="black" value={this.state.steps} unit="steps" min={stepsMin} max={stepsMax} onChangeFunction={this.onStepsChange}/>   
            {/*heart  */}
