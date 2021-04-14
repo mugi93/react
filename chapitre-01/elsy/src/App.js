@@ -17,79 +17,91 @@ class App extends React.Component {
     this.state = {
       water: 1.5,
       heart: 120,
-      temperature:-10,
-      steps:3000
+      temperature: -10,
+      steps: 3000
     };
-    this.onHeartChange=this.onHeartChange.bind(this)
-    this.onStepsChange=this.onStepsChange.bind(this)
-    this.onTempChange=this.onTempChange.bind(this)
-    this.calculateWater=this.calculateWater.bind(this)
+    this.onHeartChange = this.onHeartChange.bind(this)
+    this.onStepsChange = this.onStepsChange.bind(this)
+    this.onTempChange = this.onTempChange.bind(this)
+    // this.calculateWater = this.calculateWater.bind(this)
   }
-  onHeartChange(e){
+  onHeartChange(e) {
     this.setState({
-      heart:e.target.value,
+      heart: e.target.value,
     });
     this.calculateWater()
 
   }
-  onStepsChange(e){
+  onStepsChange(e) {
     this.setState({
-      steps:e.target.value,
+      steps: e.target.value,
     })
     this.calculateWater()
 
   }
-  onTempChange(e){
+
+  onTempChange(e) {
+    console.log("state 1:"+ this.state.temperature)//state temperature 1
+    console.log("e.target.value" , e.target.value)
     this.setState({
-      temperature:e.target.value,
+      temperature: e.target.value,
     })
+    console.log("state 2:"+this.state.temperature)
     this.calculateWater()
 
   }
-  calculateWater(){
-    if(this.state.water>=1,5){
-      if(this.state.temperature>20 ){
-      const temps=this.state.temperature-20;
-     
-      const t= temps*0.02
-      
-      this.setState({
-       water:this.state.water+t
-     });
-   }
-   
-   
-   else if(this.state.heart >120 ){
-     const h=this.state.heart-120;
-     this.setState({
-       water:this.state.water+(h*0.0008)
-     });
-    }
-    else if(this.state.steps>10000 ){
-      const step=this.state.steps-10000
-     this.setState({
-       water:this.state.water+(step*0.00002)
-     })}
-    }
+  calculateWater() {
+    console.log("state3:" +this.state.temperature) // state temperature 2
+    if (this.state.water >= 1.5) {
+      if (this.state.temperature > 20) {
+        const temps = this.state.temperature - 20
+        console.log(temps)
 
-   
-  //  else if (this.state.temperature<20){
-  //   this.setState({
-  //     water:this.state.water-0.02
-  //   })
-   
-  //  }else if(this.state.heart <120){
-  //   this.setState({
-  //     water:this.state.water-0.0008
-  //   })
-  // 
-  
-   
-  //  }else if(this.state.steps<10000){
-  //   this.setState({
-  //     water:this.state.water-0.00002
-  //   })
-  // }
+        const t = temps * 0.02
+        console.log(t)
+        const p = (this.state.water + t).toFixed(2)
+        console.log(p)
+
+        this.setState({
+          water: p
+        });
+      }
+
+
+    //   else if (this.state.heart > 120) {
+    //     const h = this.state.heart - 120;
+    //     this.setState({
+    //       water: this.state.water + (h * 0.0008)
+    //     });
+    //   }
+    //   else if (this.state.steps > 10000) {
+    //     const step = this.state.steps - 10000
+    //     this.setState({
+    //       water: this.state.water + (step * 0.00002)
+    //     })
+    //   }
+    // }
+
+
+    //  else if (this.state.temperature--){
+
+    //   this.setState({
+    //     water:this.state.water-0.02
+    //   })
+    // }
+
+    //  else if(this.state.heart <120){
+    //   this.setState({
+    //     water:this.state.water-0.0008
+    //   })
+    // 
+
+
+    //  }else if(this.state.steps<10000){
+    //   this.setState({
+    //     water:this.state.water-0.00002
+    //   })
+    }
 
   }
 
@@ -98,19 +110,17 @@ class App extends React.Component {
       <div class="container-fluid">
         <div class="row">
           {/* water */}
-          <Home icon="local_drink" color="#3A85FF" value={this.state.water} unit="L"  />
-           {/*Steps  */}
-          <Home icon="directions_walk" color="black" value={this.state.steps} unit="steps" min={stepsMin} max={stepsMax} onChangeFunction={this.onStepsChange}/>   
-           {/*heart  */}
-          <Home icon="favorite" color="red" value={this.state.heart} unit="bpm"  min={heartMin} max={heartMax} onChangeFunction={this.onHeartChange} /> 
+          <Home icon="local_drink" color="#3A85FF" value={this.state.water} unit="L" />
+          {/*Steps  */}
+          <Home icon="directions_walk" color="black" value={this.state.steps} unit="steps" min={stepsMin} max={stepsMax} onChangeFunction={this.onStepsChange} />
+          {/*heart  */}
+          <Home icon="favorite" color="red" value={this.state.heart} unit="bpm" min={heartMin} max={heartMax} onChangeFunction={this.onHeartChange} />
           {/* temperature */}
-          <Home icon="wb_sunny" color="yellow" value={this.state.temperature} unit="°C" min={tempMin} max={tempMax} onChangeFunction={this.onTempChange}/> 
+          <Home icon="wb_sunny" color="yellow" value={this.state.temperature} unit="°C" min={tempMin} max={tempMax} onChangeFunction={this.onTempChange} />
+
           
-          <p>Heart : {heartMin}</p>
-          <p>Temperature :{tempMin}</p>
-          <p>Steps :{stepsMin}</p>
         </div>
-        
+
       </div>
     );
   }
