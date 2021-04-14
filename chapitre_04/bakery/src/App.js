@@ -19,9 +19,12 @@ class App extends React.Component {
 render(){
   return(
     <div>
-      <Button isSelected={this.state.activeTab} />
-      <Button isSelected={this.state.activeTab}/>
-      <Button isSelected={this.state.activeTab}/>
+      
+      <Button isSelected={this.state.activeTab}>children={}</Button>
+
+      <Button isSelected={this.state.activeTab}>children={}</Button>
+
+      <Button isSelected={this.state.activeTab}>children={}</Button>
 
     </div>
   )
