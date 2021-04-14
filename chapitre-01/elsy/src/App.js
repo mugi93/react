@@ -59,28 +59,28 @@ class App extends React.Component {
 
         const t = temps * 0.02
         console.log(t)
-        const p = (this.state.water + t).toFixed(2)
-        console.log(p)
+        // const p = (this.state.water + t)
+        // console.log(p)
 
         this.setState({
-          water: p
+          water: (t+1.5).toFixed(2)
         });
       }
 
 
-    //   else if (this.state.heart > 120) {
-    //     const h = this.state.heart - 120;
-    //     this.setState({
-    //       water: this.state.water + (h * 0.0008)
-    //     });
-    //   }
-    //   else if (this.state.steps > 10000) {
-    //     const step = this.state.steps - 10000
-    //     this.setState({
-    //       water: this.state.water + (step * 0.00002)
-    //     })
-    //   }
-    // }
+      else if (this.state.heart > 120) {
+        const h = this.state.heart - 120;
+        this.setState({
+          water: (1.5 + (h * 0.0008)).toFixed(2)
+        });
+      }
+      else if (this.state.steps > 10000) {
+        const step = this.state.steps - 10000
+        this.setState({
+          water: (1.5 + (step * 0.00002)).toFixed(2)
+        })
+      }
+    
 
 
     //  else if (this.state.temperature--){
