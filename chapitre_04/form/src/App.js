@@ -5,15 +5,30 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mails: ""
+      mails: "",
+      pass:""
     }
     this.validator = this.validator.bind(this)
+    this.validatori=this.validatori.bind(this)
   }
   validator(e) {
     this.setState({
       mails: e.target.value
     })
 
+  }
+  validatori(e){
+    this.setState({
+      pass:e.target.value
+
+    })
+  }
+  passvalid(){
+    if (this.state.pass<4){
+      return"form-control is-invalid"
+    }else{
+      return "form-control is-valid"
+    }
   }
   mailvalid() {
     if (this.state.mails.indexOf("@") === -1 && this.state.mails.indexOf(".") === -1) {
@@ -40,7 +55,7 @@ class App extends React.Component {
 
         <div class="mb-3">
           <label for="exampleInputPassword1" className="form-label">Password</label>
-          <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" ></input>
+          <input type="password" className={this.passvalid()} id="exampleInputPassword1" placeholder="Password" value={this.state.pass} onInput={this.validatori}></input>
         </div>
 
         <div class="mb-3 form-check">
