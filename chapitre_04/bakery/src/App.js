@@ -14,17 +14,31 @@ class App extends React.Component {
 
 
     }
-    
+    this.blue=this.blue.bind(this)
   }
-render(){
+  blue(){
+    if(this.state.activeTab==="add"){
+      return "btn btn-primary"
+    }
+
+
+
+  }
+
+  render(){
   return(
     <div>
       
-      <Button isSelected={this.state.activeTab}>children={}</Button>
+      <Button  isSelected={this.blue()} >Add</Button>
 
-      <Button isSelected={this.state.activeTab}>children={}</Button>
+      <Button isSelected={this.state.activeTab}>List</Button>
 
-      <Button isSelected={this.state.activeTab}>children={}</Button>
+      <Button isSelected={this.state.activeTab}>Pay</Button>
+      
+
+      <List/>
+      <Add/>
+      <Pay/>
 
     </div>
   )
