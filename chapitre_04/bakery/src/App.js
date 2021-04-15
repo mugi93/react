@@ -9,40 +9,67 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeTab:"add",
-      items:[]
+      activeTab: "add",
+      items: []
 
 
     }
-    this.blue=this.blue.bind(this)
+    this.clickAdd = this.clickAdd.bind(this)
+    this.clickList = this.clickList.bind(this)
+    this.clickPay = this.clickPay.bind(this)
   }
-  blue(){
-    if(this.state.activeTab==="add"){
-      return "btn btn-primary"
+
+  clickAdd(e) {
+    this.setState({
+      activeTab: "add"
+    })
+  }
+
+  clickList(e) {
+    this.setState({
+      activeTab: "list"
+    })
+  }
+  clickPay(e) {
+    this.setState({
+      activeTab: "pay"
+    })
+  }
+
+  renderContent() {
+    if (this.state.activeTab==="add") {
+      return (
+            <Add/>
+        );
+    } else if (this.state.activeTab==="list") {
+      return (
+        <List/>
+            
+        );
+    }else if (this.state.activeTab==="pay"){
+      return(
+        <Pay/>
+      )
     }
-
-
-
   }
 
-  render(){
-  return(
-    <div>
-      
-      <Button  isSelected={this.blue()} >Add</Button>
 
-      <Button isSelected={this.state.activeTab}>List</Button>
+  render() {
+    return (
+      <div>
 
-      <Button isSelected={this.state.activeTab}>Pay</Button>
-      
+        <Button isSelected={this.state.activeTab === "add" ? "btn btn-primary" : "btn btn-outline-secondary"} onClick={this.clickAdd}  >Add</Button>
 
-      <List/>
-      <Add/>
-      <Pay/>
+        <Button isSelected={this.state.activeTab === "list" ? "btn btn-primary" : "btn btn-outline-secondary"} onClick={this.clickList} >List</Button>
 
-    </div>
-  )
-}
+        <Button isSelected={this.state.activeTab === "pay" ? "btn btn-primary" : "btn btn-outline-secondary"} onClick={this.clickPay}>Pay</Button>
+
+        {this.renderContent()}
+
+
+      </div>
+    )
+  }
 
 
 }
