@@ -17,6 +17,7 @@ class App extends React.Component {
     this.clickAdd = this.clickAdd.bind(this)
     this.clickList = this.clickList.bind(this)
     this.clickPay = this.clickPay.bind(this)
+    this.addItem= this.addItem.bind(this)
   }
 
   clickAdd(e) {
@@ -39,7 +40,7 @@ class App extends React.Component {
   renderContent() {
     if (this.state.activeTab==="add") {
       return (
-            <Add/>
+            <Add onClickAdd={this.addItem}/>
         );
     } else if (this.state.activeTab==="list") {
       return (
@@ -52,8 +53,21 @@ class App extends React.Component {
       )
     }
   }
+  addItem(n,p){
+    const it={
+      name:n,
+      price:p
+    }
+    this.setState({
+      items:[...this.state.items,it]
+      // items:it
+    })
+    console.log(this.state.items)
 
+  }
 
+  
+  
   render() {
     return (
       <div>
