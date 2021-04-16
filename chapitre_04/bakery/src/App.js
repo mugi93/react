@@ -36,25 +36,8 @@ class App extends React.Component {
       activeTab: "pay"
     })
   }
-
-  renderContent() {
-    if (this.state.activeTab==="add") {
-      return (
-            <Add onClickAdd={this.addItem}/>
-        );
-    } else if (this.state.activeTab==="list") {
-      return (
-        <List/>
-            
-        );
-    }else if (this.state.activeTab==="pay"){
-      return(
-        <Pay/>
-      )
-    }
-  }
-  addItem(n,p){
-    const it={
+addItem(n,p){
+    let it={
       name:n,
       price:p
     }
@@ -66,11 +49,32 @@ class App extends React.Component {
 
   }
 
+  renderContent() {
+    if (this.state.activeTab==="add") {
+      return (
+            <Add onClickAdd={this.addItem}/>
+        );
+    } if (this.state.activeTab==="list") {
+      return (
+        <List list={this.state.items }/>
+            
+        );
+    } if (this.state.activeTab==="pay"){
+      return(
+        <Pay/>
+      )
+    }
+  }
+  
   
   
   render() {
     return (
       <div>
+
+        <h1 className="text-center">Bakery</h1>
+       <div className="offset-1">
+
 
         <Button isSelected={this.state.activeTab === "add" ? "btn btn-primary" : "btn btn-outline-secondary"} onClick={this.clickAdd}  >Add</Button>
 
@@ -82,6 +86,11 @@ class App extends React.Component {
 
 
       </div>
+
+
+
+      </div>
+      
     )
   }
 

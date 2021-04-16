@@ -6,10 +6,10 @@ class App extends React.Component {
     super(props);
     this.state = {
       mails: "",
-      pass:""
+      pass: ""
     }
     this.validator = this.validator.bind(this)
-    this.validatori=this.validatori.bind(this)
+    this.validatori = this.validatori.bind(this)
   }
   validator(e) {
     this.setState({
@@ -17,25 +17,36 @@ class App extends React.Component {
     })
 
   }
-  validatori(e){
+  validatori(e) {
     this.setState({
-      pass:e.target.value
+      pass: e.target.value
 
     })
   }
-  passvalid(){
-    if (this.state.pass<4){
-      return"form-control is-invalid"
-    }else{
+  passvalid() {
+    if (this.state.pass.length < 4) {
+      return "form-control is-invalid"
+    } else {
       return "form-control is-valid"
     }
   }
+
   mailvalid() {
-    if (this.state.mails.indexOf("@") === -1 && this.state.mails.indexOf(".") === -1) {
+    if (this.state.mails.indexOf("@") === -1 || this.state.mails.indexOf(".") === -1) {
       return "form-control is-invalid"
 
-    }else{
+    } else {
       return "form-control is-valid"
+    }
+  }
+
+  submit() {
+    if (this.state.mails.indexOf("@") === -1 || this.state.pass < 4) {
+      return "btn btn-primary disabled"
+
+    } else {
+      return "btn btn-primary"
+
     }
   }
 
@@ -62,7 +73,7 @@ class App extends React.Component {
           <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
           <label className="form-check-label" for="exampleCheck1">Remember me</label>
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className={this.submit()}>Submit</button>
 
 
       </div>
