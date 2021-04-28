@@ -1,5 +1,6 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Sub from "./componant/Sub"
 
 class App extends React.Component {
   constructor(props) {
@@ -50,12 +51,14 @@ class App extends React.Component {
     }
   }
 
+  renderContent(){
 
+  }
 
   render() {
     return (
       <div class="offset-3 col-5">
-        <h2 class="text-center mb-5">Login</h2>
+        <h1 class="text-center mb-5">Login</h1>
 
 
         <div class="mb-3">
@@ -73,7 +76,7 @@ class App extends React.Component {
           <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
           <label className="form-check-label" for="exampleCheck1">Remember me</label>
         </div>
-        <button type="submit" className={this.submit()}>Submit</button>
+        <button type="submit" className={this.submit()} onClick={this.renderContent}>Submit</button>
 
 
       </div>
