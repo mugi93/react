@@ -67,17 +67,19 @@ class App extends React.Component {
       })
     }
 
-    // search(){
-    //   if(this.state.name===e.target.value){
-    //     return (
-    //       <div className="border border-primary offset-4 col-3 text-center" style={{width:"600px"}}>
-    //       <Card flag={this.state.flag} count={this.state.name} capi={this.state.capital} regi={this.state.region} popu={this.state.population} />
+    search(e){
+      console.log("e:",e)
+
+      // if(this.state.name===count){
+      //   return (
+      //     <div className="border border-primary offset-4 col-3 text-center" style={{width:"600px"}}>
+      //     <Card flag={this.state.flag} count={this.state.name} capi={this.state.capital} regi={this.state.region} popu={this.state.population} />
           
-    //     </div>)
-    //   }else {
-    //     <Input value={this.state.name} />
-    //   }
-    // }
+      //   </div>)
+      // }else {
+      //   <Input value={this.state.name} />
+      // }
+    }
 
   render() {
 
@@ -86,10 +88,10 @@ class App extends React.Component {
 
       <div>
         <div className="btn-group offset-3 col-2" >
-          <Button click={() => this.getCountry("France")}>France</Button>
+          {/* <Button click={() => this.getCountry("France")}>France</Button>
           <Button click={() => this.getCountry("Croatia")}>Croatia</Button>
-          <Button click={() => this.getCountry("Brazil")}>Brazil</Button>
-          {/* <Input value={this.state.name} search={this.search(e.target.value)} /> */}
+          <Button click={() => this.getCountry("Brazil")}>Brazil</Button> */}
+          <Input value={()=>this.search()}/>
         </div>
 
         <div className="border border-primary offset-4 col-3 text-center" style={{width:"600px"}}>
