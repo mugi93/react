@@ -5,7 +5,10 @@ class Button extends React.Component {
 
     render(){
         return(
-            <button onClick={this.props.click}>{this.props.children}</button>
+            <div className="offset-6 text center ">
+                <button className="btn btn-primary" onClick={this.props.click}>{this.props.children}</button>
+            </div>
+            
         )
     }
 

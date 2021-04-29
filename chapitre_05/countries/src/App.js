@@ -1,6 +1,8 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from "./components/Button"
+import Card from "./components/Card"
+import Input from "./components/Input"
 
 class App extends React.Component {
   constructor(props) {
@@ -44,45 +46,56 @@ class App extends React.Component {
   //     })
   // }
   getCountry(country) {
-    fetch("https://restcountries.eu/rest/v2/name/" + country)
+    fetch("http://localhost:9001/country/" + country)
       .then(res => res.json())
-      .then(countries => countries[0].name)
-      .then(capital => capital[0].capital)
-      .then(flag => flag[0].flag)
-      .then(population => population[0].population)
-      .then(region => region[0].region)
+      .then(countries => {
+        const names = countries[0].name
+        const capitals = countries[0].capital
+        const flags = countries[0].flag
+        const populations = countries[0].population
+        const regions = countries[0].region
 
-        
         this.setState({
-          name: countries,
+          name: names,
           capital: capitals,
-          flag: flag,
-          population: population,
-          region: region
+          flag: flags,
+          population: populations,
+          region: regions
         });
 
 
       })
-  }
-  
+    }
+
+    // search(){
+    //   if(this.state.name===e.target.value){
+    //     return (
+    //       <div className="border border-primary offset-4 col-3 text-center" style={{width:"600px"}}>
+    //       <Card flag={this.state.flag} count={this.state.name} capi={this.state.capital} regi={this.state.region} popu={this.state.population} />
+          
+    //     </div>)
+    //   }else {
+    //     <Input value={this.state.name} />
+    //   }
+    // }
+
   render() {
 
 
     return (
 
       <div>
-        <Button click={() => this.getCountry("France")}>France</Button>
-        <Button click={() => this.getCountry("Brazil")}>Brazil</Button>
-        <Button click={() => this.getCountry("Croatia")}>Croatia</Button>
+        <div className="btn-group offset-3 col-2" >
+          <Button click={() => this.getCountry("France")}>France</Button>
+          <Button click={() => this.getCountry("Croatia")}>Croatia</Button>
+          <Button click={() => this.getCountry("Brazil")}>Brazil</Button>
+          {/* <Input value={this.state.name} search={this.search(e.target.value)} /> */}
+        </div>
 
-        <ul>
-          <li>Country:{this.state.name} </li>
-          <li>Capital:{this.state.capital}</li>
-          <li>{this.state.flag}</li>
-          <li>Population:{this.state.population}</li>
-          <li>Region:{this.state.region}</li>
-        </ul>
-
+        <div className="border border-primary offset-4 col-3 text-center" style={{width:"600px"}}>
+          <Card flag={this.state.flag} count={this.state.name} capi={this.state.capital} regi={this.state.region} popu={this.state.population} />
+          
+        </div>
 
       </div >
     )
