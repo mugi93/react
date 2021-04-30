@@ -45,37 +45,41 @@ class App extends React.Component {
   //       });
   //     })
   // }
-  getCountry(country) {
-    fetch("http://localhost:9001/country/" + country)
-      .then(res => res.json())
-      .then(countries => {
-        const names = countries[0].name
-        const capitals = countries[0].capital
-        const flags = countries[0].flag
-        const populations = countries[0].population
-        const regions = countries[0].region
+  // getCountry(country) {
+  //   fetch("http://localhost:9001/country/" + country)
+  //     .then(res => res.json())
+  //     .then(countries => {
+  //       console.log(countries);
+  //       const names = countries[0].name
+  //       const capitals = countries[0].capital
+  //       const flags = countries[0].flag
+  //       const populations = countries[0].population
+  //       const regions = countries[0].region
 
-        this.setState({
-          name: names,
-          capital: capitals,
-          flag: flags,
-          population: populations,
-          region: regions
-        });
+  //       this.setState({
+  //         name: names,
+  //         capital: capitals,
+  //         flag: flags,
+  //         population: populations,
+  //         region: regions
+  //       });
 
 
-      })
-  }
+  //     })
+  // }
 
   search(e) {
 
     // console.log("search value:",e.target.value)
     const value = e.target.value
-    console.log(value)
+    // console.log(value)
 
-    fetch("http://localhost:9001/country/" + value)
+    if (value.lenght>4){
+      fetch("http://localhost:9001/country/" + value)
       .then(res => res.json())
       .then(values => {
+    
+        console.log(values)
         const names = values[0].name
         const capitals = values[0].capital
         const flags = values[0].flag
@@ -89,8 +93,10 @@ class App extends React.Component {
           population: populations,
           region: regions
         });
-      })
+     }) 
     }
+    }
+    
 
   render() {
 

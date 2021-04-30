@@ -61,7 +61,7 @@ addItem(n,p){
         );
     } if (this.state.activeTab==="pay"){
       return(
-        <Pay/>
+        <Pay items={this.state.items}/>
       )
     }
   }
@@ -74,9 +74,8 @@ addItem(n,p){
 
         <h1 className="text-center">Bakery</h1>
        <div className="offset-1">
-
-
-        <Button isSelected={this.state.activeTab === "add" ? "btn btn-primary" : "btn btn-outline-secondary"} onClick={this.clickAdd}  >Add</Button>
+         
+         <Button isSelected={this.state.activeTab === "add" ? "btn btn-primary" : "btn btn-outline-secondary"} onClick={this.clickAdd}  >Add</Button>
 
         <Button isSelected={this.state.activeTab === "list" ? "btn btn-primary" : "btn btn-outline-secondary"} onClick={this.clickList} >List</Button>
 
