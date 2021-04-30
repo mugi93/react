@@ -2,19 +2,20 @@
 import React from "react";
 
 class Input extends React.Component {
+
     
-    vali(e){
-        const search=e.target.value
-        console.log("valeur de event:" , search)
-        return this.props.valueE(search)
+    // vali(e){
+    //     const search=e.target.value
+    //     console.log("valeur de event:" , search)
+       
+    // }
 
-    }
-
-    render(){
+    render(e){
+        
         console.log(this.props)
         return(
             <div className="offset-6 text center ">
-                <input type="text" className="form-control"  value={this.props.searche} onInput={this.vali}/>
+                <input type="text" className="form-control"  onInput={(e)=>this.props.vali(e)}/>
                 {/* <button className="btn btn primary" >search</button> */}
             </div>
             
