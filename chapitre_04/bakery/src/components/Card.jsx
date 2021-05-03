@@ -1,15 +1,16 @@
 import React from "react";
 
 
+
 class Card extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            image: "../../public/item.png"
+            image: "url(../../public/item.png)"
         }
     }
     componentDidMount() {
-        fetch("https://raw.githubusercontent.com/konexio/digitous-assest/main/bakery/" + this.props.productName)
+        fetch("https://raw.githubusercontent.com/konexio/digitous-assest/main/bakery/"+this.props.productName+".png")
             .then(res => res.blob())
             .then(image => {
                 const pic = URL.createObjectURL(image)
@@ -24,9 +25,7 @@ class Card extends React.Component {
 
         return (
             <div>
-                <button onClick={()=>this.props.onClick(this.props.price, this.props.productName)}>{this.state.image}</button>
-
-
+                <button onClick={()=>this.props.onClick(this.props.price, this.props.productName)}style={{backgroundImage:this.state.image,width:"500px",height:"500px"}}></button>
 
 
             </div>

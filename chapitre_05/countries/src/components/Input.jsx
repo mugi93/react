@@ -15,8 +15,9 @@ class Input extends React.Component {
         console.log(this.props)
         return(
             <div className="offset-6 text center ">
-                <input type="text" className="form-control"  onInput={(e)=>this.props.vali(e)}/>
-                {/* <button className="btn btn primary" >search</button> */}
+                <input type="text" className="form-control"  />
+                {/* onInput={(e)=>this.props.vali(e)} */}
+                <button className="btn btn primary"onClick={(e)=>this.props.vali(e)}  >search</button>
             </div>
             
         )

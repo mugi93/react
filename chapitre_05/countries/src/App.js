@@ -15,6 +15,7 @@ class App extends React.Component {
       region: ""
 
     }
+    this.search = this.search.bind(this)
   }
 
   // componentDidMount() {
@@ -74,46 +75,49 @@ class App extends React.Component {
     const value = e.target.value
     // console.log(value)
 
-    if (value.lenght>4){
+    // if (value.lenght > 4) {
       fetch("http://localhost:9001/country/" + value)
-      .then(res => res.json())
-      .then(values => {
-    
-        console.log(values)
-        const names = values[0].name
-        const capitals = values[0].capital
-        const flags = values[0].flag
-        const populations = values[0].population
-        const regions = values[0].region
+        .then(res => res.json())
+        .then(values => {
 
-        this.setState({
-          name: names,
-          capital: capitals,
-          flag: flags,
-          population: populations,
-          region: regions
-        });
-     }) 
-    }
-    }
-    
+          console.log(values)
+          const names = values[1].name
+          const capitals = values[1].capital
+          const flags = values[1].flag
+          const populations = values[1].population
+          const regions = values[1].region
+
+          this.setState({
+            name: names,
+            capital: capitals,
+            flag: flags,
+            population: populations,
+            region: regions
+          });
+        })
+    // }
+  }
+
 
   render() {
 
 
-        return(
+    return (
 
       <div>
         <div className="btn-group offset-3 col-2" >
-          {/* <Button click={() => this.getCountry("France")}>France</Button>
+          <Button click={() => this.getCountry("France")}>France</Button>
           <Button click={() => this.getCountry("Croatia")}>Croatia</Button>
-          <Button click={() => this.getCountry("Brazil")}>Brazil</Button> */}
-          <Input  vali={this.search}/>
-        </div>
+          <Button click={() => this.getCountry("Brazil")}>Brazil</Button>
 
-        <div className="border border-primary offset-4 col-3 text-center" style={{width:"600px"}}>
+        </div>
+        <div className="offset-3 col-2">
+          <Input vali={this.search} />
+        </div>
+        
+        <div className="border border-primary offset-4 col-3 text-center" style={{ width: "600px" }}>
           <Card flag={this.state.flag} count={this.state.name} capi={this.state.capital} regi={this.state.region} popu={this.state.population} />
-          
+
         </div>
 
       </div >

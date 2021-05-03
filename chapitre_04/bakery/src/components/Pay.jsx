@@ -18,16 +18,17 @@ handleSelect(name,price){
     const totals=+ price
     const tva=totals+20/100
     const totalTVA= tva+totals
-    const eco=
+    const eco=this.state.basket.name.length*0.3
+    const ttc=eco+totalTVA
     this.setState({
         basket:{
-            name,
+           name,
             price
         },
         total:totals,
-        totalEcoTax:o,
+        totalEcoTax:eco,
         totalTVA:totalTVA,
-        totalTTC:totalEcoTax+totalTVA
+        totalTTC:ttc
 
 
 
@@ -41,12 +42,15 @@ handleSelect(name,price){
     render(){
         return(
             <div>
-                <Card productName="croissant.png"/>
-                {this.props.items}
-                <p>{this.state.total}</p>
-                <ul>
+                
+               
+                {/* <p>{this.state.totalEcoTax}</p>
+                <p>{this.state.totalTVA}</p>
+                <p>{this.state.totalTTC}</p>
+                <p>{this.state.total}</p> */}
+                <ul> 
                     {this.props.items.map(item=>{
-                        return <li><Card productName={item.name} price={item.price} onClick={this.handleSelect}/></li>
+                        return <li><Card productName={item.productName} price={item.price} onClick={this.handleSelect}/></li>
                     })}
                 </ul>
             </div>

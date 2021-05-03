@@ -19,7 +19,7 @@ class Add extends React.Component {
     }
     updatePrice(e) {
         this.setState({
-            price: e.target.value
+            price: e.target.value+" euros"
         })
 
     }
