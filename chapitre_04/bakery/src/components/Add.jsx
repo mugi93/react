@@ -4,7 +4,7 @@ class Add extends React.Component {
         super(props);
         this.state = {
             productName: "",
-            price: 1+"euros"
+            price: 1
         }
         this.updatePrice = this.updatePrice.bind(this)
         this.updateProductName = this.updateProductName.bind(this)
@@ -19,7 +19,7 @@ class Add extends React.Component {
     }
     updatePrice(e) {
         this.setState({
-            price: e.target.value+" euros"
+            price: e.target.value
         })
 
     }
@@ -27,6 +27,7 @@ class Add extends React.Component {
         this.props.onClickAdd(this.state.productName, this.state.price)
 
     }
+    
 
     render() {
         return (
@@ -38,7 +39,7 @@ class Add extends React.Component {
                 </div>
 
                 <input type="range" id="customRange2" style={{ width: "450px" }} className="form-range" min="1" max="10" onChange={this.updatePrice} ></input>
-                <p>{this.state.price}</p>
+                <p>{this.state.price} euros</p>
 
 
 

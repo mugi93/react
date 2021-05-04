@@ -6,7 +6,7 @@ class Card extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            image: "url(../../public/item.png)"
+            image: "image/item.png"
         }
     }
     componentDidMount() {
@@ -25,7 +25,7 @@ class Card extends React.Component {
 
         return (
             <div>
-                <button onClick={()=>this.props.onClick(this.props.price, this.props.productName)}style={{backgroundImage:this.state.image,width:"500px",height:"500px"}}></button>
+                <button onClick={()=>this.props.onClick(this.props.price, this.props.productName)}><img style={{width:"300px"}} src={this.state.image}/></button>
 
 
             </div>
