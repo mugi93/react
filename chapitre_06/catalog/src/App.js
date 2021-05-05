@@ -1,6 +1,8 @@
 import React from "react";
-import Acceuil from "./componant/Acceuil"
+import Acceuil from "./component/Acceuil"
+
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+import Movieinfo from "./component/Movieinfo";
 
 
 class App extends React.Component {
@@ -16,7 +18,9 @@ class App extends React.Component {
     
     return(
       <div>
+        
         <Acceuil/>
+        
       </div>
     )
   }
