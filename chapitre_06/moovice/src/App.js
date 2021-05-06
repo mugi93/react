@@ -1,46 +1,40 @@
-import React, { Component } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-import Home from "./views/Home"
-import Weekly from  "./views/Weekly"
-import WeeklyBattle from "./views/WeeklyBattle"
-import Popular from "./views/Popular"
-import PopularBattle from "./views/PopularBattle"
-import Favorites from "./views/Favorites"
-    
+import React, { Component } from 'react';
+import { BrowserRouter, Link, Switch, Route } from 'react-router-dom'
 
+import Home from './views/Home'
+import Weekly from './views/Weekly'
+import WeeklyBattle from './views/WeeklyBattle'
+import Popular from './views/Popular'
+import PopularBattle from './views/PopularBattle'
+import Favorites from './views/Favorites'
 
-
-export default class App extends Component {
-      render() {
+class App extends Component {
+    render() {
         return (
-          <div>
-            <BrowserRouter> 
-        <div>
-          <nav> 
-            <ul>
-              <li><Link to="/">Home</Link></li> 
-              <li><Link to="/weekly">Weekly</Link></li>
-              <li><Link to="/weeklyb">WeeklyBattle</Link></li>
-              <li><Link to="/popu">Popular</Link></li>
-              <li><Link to="/popub">PopularBattle</Link></li>
-              <li><Link to="/favo">Favorites</Link></li>
-            </ul>
-          </nav>
+            <BrowserRouter>
 
-          <Switch> 
-            <Route exact path="/" component={Home}/> 
-						<Route path="/weekly" component={Weekly}/>
-            <Route path="/weeklyb" component={WeeklyBattle}/>
-            <Route path="/popu" component={Popular}/>
-            <Route path="/popub" component={PopularBattle}/>
-            <Route path="/favo" component={Favorites}/>
-            
-          </Switch>
-        </div>
-      </BrowserRouter>
-          </div>
-        )
-      }
+                <nav>
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/weekly">Weekly</Link></li>
+                        <li><Link to="/weekly-battle">Weekly Battle</Link></li>
+                        <li><Link to="/popular">Popular</Link></li>
+                        <li><Link to="/popular-battle">Popular Battle</Link></li>
+                        <li><Link to="/favorites">Favorites</Link></li>
+                    </ul>
+                </nav>
+                
+                <Switch>
+                    <Route exact path="/" component={Home}/>
+                    <Route exact path="/weekly" component={Weekly}/>
+                    <Route exact path="/weekly-battle" component={WeeklyBattle}/>
+                    <Route exact path="/popular" component={Popular}/>
+                    <Route exact path="/popular-battle" component={PopularBattle}/>
+                    <Route exact path="/favorites" component={Favorites}/>
+                </Switch>
+            </BrowserRouter>
+        );
     }
-    
+}
+
+export default App;
