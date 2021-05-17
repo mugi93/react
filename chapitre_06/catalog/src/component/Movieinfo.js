@@ -16,7 +16,7 @@ class Movieinfo extends React.Component {
                     console.log(elem.length)
                     console.log("elem:",elem)
                     return (
-                        {<h2>{elem.title}</h2>}
+                        <h2>{elem.title}</h2>
                         
                         
                     )
