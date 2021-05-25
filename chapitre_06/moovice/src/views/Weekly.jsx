@@ -1,25 +1,16 @@
-import React, { Component } from 'react'
-import Card from "../components/Cards"
+import React, { Component } from 'react';
+import Card from '../components/Cards'
+import { getLatestMovies } from '../utils/Api'
 
-import moment from 'moment'
-
-export default class Weekly extends Component {
-
+class Weekly extends Component {
 
     state = {
         movies: []
     }
 
     componentDidMount() {
-        const LAST_WEEK=moment().subtract(1, 'weeks').startOf('isoWeek').format('YYYY-MM-DD')
-        const TODAY=moment().format("YYYY-MM-DD") 
-        console.log(LAST_WEEK);
-        const url = `http://api.themoviedb.org/3/discover/movie?primary_release_date.gte=${LAST_WEEK}&primary_release_date.lte=${TODAY}&api_key=e441f8a3a151d588a4932d2c5d310769`
-
-        fetch(url)
-            .then(response => response.json())
+        getLatestMovies()
             .then(data => {
-                console.log("data in popular component did mount", data);
 
                 this.setState({
                     movies: data.results
@@ -29,8 +20,8 @@ export default class Weekly extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Weekly</h1>
+            <div className="container">
+                <h1 className="text-center">Weekly</h1>
 
                 <div className="row">
                     {
@@ -44,7 +35,10 @@ export default class Weekly extends Component {
                     }
                 </div>
 
+
             </div>
         );
     }
 }
+
+export default Weekly;

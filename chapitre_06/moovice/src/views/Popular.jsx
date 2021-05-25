@@ -10,20 +10,21 @@ class Popular extends Component {
     }
 
     componentDidMount() {
-        const url = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=e441f8a3a151d588a4932d2c5d310769"
+        const url = "http://localhost:9001/movie"
 
         fetch(url)
             .then(response => response.json())
             .then(data => {
                 console.log("data in popular component did mount", data);
+                console.log(  typeof data)
 
                 this.setState({
-                    movies: data.results
-                })
+                    movies: data                })
             })
     }
 
     render() {
+        console.log(typeof this.state.movie)
         return (
             <div>
                 <h1>Popular</h1>
@@ -31,6 +32,8 @@ class Popular extends Component {
                 <div className="row">
                     {
                         this.state.movies.map(elem => {
+                            console.log(typeof elem);
+                            console.log(elem.title);
                             return (
                                 <div className="col-6">
                                     <Card {...elem} />

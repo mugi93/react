@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-
 import Card from '../components/Cards'
+import { getPopularMovies } from '../utils/Api'
 
 class PopularBattle extends Component {
 
     state = {
         movies: [],
-        indexFirstMovieOfCurrentBattle: 0
+        currentBattle: 1
     }
 
     componentDidMount() {
-        const url = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=e441f8a3a151d588a4932d2c5d310769"
 
-        fetch(url)
-            .then(response => response.json())
+        getPopularMovies()
             .then(data => {
                 this.setState({
                     movies: data.results
@@ -22,11 +20,11 @@ class PopularBattle extends Component {
     }
 
     updateIndexMovieBattle = (movieId) => {
-        // console.log("updateIndexMovieBattle", typeof movieId);
+        console.log("updateIndexMovieBattle", typeof movieId);
 
         const idsFavorites = JSON.parse(localStorage.getItem("favorites")) || []
 
-        // console.log("idsFavorites", idsFavorites);
+        console.log("idsFavorites", idsFavorites);
 
         // if (!idsFavorites.find(elem => elem === movieId)) {
         if (!idsFavorites.includes(movieId)) {
@@ -36,31 +34,36 @@ class PopularBattle extends Component {
         }
 
         this.setState({
-            indexFirstMovieOfCurrentBattle: this.state.indexFirstMovieOfCurrentBattle + 2
+            currentBattle: this.state.currentBattle + 1
         })
     }
 
     renderTwoMovies() {
-        const { indexFirstMovieOfCurrentBattle } = this.state
+        const { currentBattle } = this.state
+
+        const indexFirstMovie = (currentBattle - 1) * 2
+
+        const firstMovie = this.state.movies[indexFirstMovie]
+        const secondMovie = this.state.movies[indexFirstMovie + 1]
 
         return (
             <>
                 <div className="col-6" style={{ cursor: "pointer" }}
-                    onClick={() => this.updateIndexMovieBattle(this.state.movies[indexFirstMovieOfCurrentBattle].id)}>
+                    onClick={() => this.updateIndexMovieBattle(firstMovie.id)}>
                     <Card
-                        title={this.state.movies[indexFirstMovieOfCurrentBattle].title}
-                        poster_path={this.state.movies[indexFirstMovieOfCurrentBattle].poster_path}
-                        release_date={this.state.movies[indexFirstMovieOfCurrentBattle].release_date}
-                        overview={this.state.movies[indexFirstMovieOfCurrentBattle].overview}
+                        title={firstMovie.title}
+                        poster_path={firstMovie.poster_path}
+                        release_date={firstMovie.release_date}
+                        overview={firstMovie.overview}
                     />
                 </div>
                 <div className="col-6" style={{ cursor: "pointer" }}
-                    onClick={() => this.updateIndexMovieBattle(this.state.movies[indexFirstMovieOfCurrentBattle + 1].id)}>
+                    onClick={() => this.updateIndexMovieBattle(secondMovie.id)}>
                     <Card
-                        title={this.state.movies[indexFirstMovieOfCurrentBattle + 1].title}
-                        poster_path={this.state.movies[indexFirstMovieOfCurrentBattle + 1].poster_path}
-                        release_date={this.state.movies[indexFirstMovieOfCurrentBattle + 1].release_date}
-                        overview={this.state.movies[indexFirstMovieOfCurrentBattle + 1].overview}
+                        title={secondMovie.title}
+                        poster_path={secondMovie.poster_path}
+                        release_date={secondMovie.release_date}
+                        overview={secondMovie.overview}
                     />
                 </div>
             </>
@@ -73,7 +76,7 @@ class PopularBattle extends Component {
                 <h1 className="text-center">Popular Battle</h1>
 
 
-                {this.state.indexFirstMovieOfCurrentBattle > 19
+                {this.state.currentBattle > 10
                     ? "Vous avez parcouru tous les films "
                     : <div className="row">
                         {this.state.movies.length !== 0
