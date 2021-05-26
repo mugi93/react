@@ -14,7 +14,7 @@ class PopularBattle extends Component {
         getPopularMovies()
             .then(data => {
                 this.setState({
-                    movies: data.results
+                    movies: data
                 })
             })
     }
