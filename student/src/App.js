@@ -1,17 +1,36 @@
 import React, { Component } from 'react'
-const axios = require('axios');
+
+import { Switch, Route, BrowserRouter } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Student from './views/Student'
 
 export default class App extends Component {
-  
-  student(){
-    axios.get("http://localhost:9000/students")
-  }
-  
   render() {
     return (
-      <div>
-        
-      </div>
-    )
+      <BrowserRouter>
+        <div>
+          <h1>Students</h1>
+
+
+          <Switch>
+            <Route path="/" exact>
+              <Student />
+
+            </Route>
+
+            <Route path="studentAdded" exact>
+
+            </Route>
+
+          </Switch>
+        </div>
+      </BrowserRouter>
+    );
   }
+
 }
+
+
+
+
+
