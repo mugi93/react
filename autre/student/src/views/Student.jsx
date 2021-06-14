@@ -59,48 +59,54 @@ const StudentList = () => {
     // }
     const handleChange = (e) => {
         setName({ name: e.target.value });
+        console.log(name)
     }
 
     const handleSubmit = () => {
 
 
-        axios.post(`http://localhost:9000/students`,()=>{
+        axios.post(`/students`)
+        .then(res=> {
+            console.log(res)
 
-            setStudents ({students:students.push(name)})
-            
+          setStudents({ students: res.push(name) })
+
         })
+    }
+    
+    
             
               
             
-    }
-    // console.log(name)
-    // console.log(students)
+    
+    console.log(name)
+    console.log(students)
 
     return (
-        <div>
+    <div>
 
-            <h2>List Students</h2>
+        <h2>List Students</h2>
 
-            <ul>
-                {
-                    students.map(elem => {
-                        return <li>{elem}</li>
-                    })
-                }
-            </ul>
-             <form >
-                <label>
+        <ul>
+            {
+                students.map(elem => {
+                    return <li>{elem}</li>
+                })
+            }
+        </ul>
+        <form >
+            <label>
 
-                    <input type="text" name="name" onChange={handleChange} />
-                </label>
-                <button type="submit" onClick={handleSubmit}>Add</button>
-            </form>
-            {/* <input placeholder="name" onChange={handleChange()}></input> */}
-            {/* <button>send</button>  */}
+                <input type="text" name="name" onChange={handleChange} />
+            </label>
+            <button type="submit" onClick={handleSubmit}>Add</button>
+        </form>
+        {/* <input placeholder="name" onChange={handleChange()}></input> */}
+        {/* <button>send</button>  */}
 
-        </div>
+    </div>
 
-    );
+);
 }
 
 export default StudentList;
